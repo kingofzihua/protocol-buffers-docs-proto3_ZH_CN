@@ -129,7 +129,7 @@ message Foo {
 一个标量消息字段可以含有一个如下的类型——该表格展示了定义于.proto文件中的类型，以及与之对应的、在自动生成的访问类中定义的类型：
 
 |.proto Type	|Notes	|C++ Type	|Java Type	|Python Type[2]	|Go Type	|Ruby Type	|C# Type	|PHP Type|
-| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| --- | ------------ | --- | --- | --- | --- | --- | --- | --- |
 |double	|	|double	|double	|float	|float64	|Float	|double	|float|
 |float	|	|float	|float	|float	|float32	|Float	|float	|float|
 |int32	|使用变长编码，对于负值的效率很低，如果你的域有可能有负值，请使用sint64替代	|int32	|int	|int	|int32	|Fixnum 或者 Bignum（根据需要）	|int	|integer|
@@ -144,6 +144,9 @@ message Foo {
 |bool	|	|bool	|boolean	|bool	|bool	|TrueClass/FalseClass	|bool	|boolean|
 |string	|一个字符串必须是UTF-8编码或者7-bit ASCII编码的文本。	|string	|String	|str/unicode	|string	|String (UTF-8)	|string	|string|
 |bytes	|可能包含任意顺序的字节数据。	|string	|ByteString	|str	|[]byte	|String (ASCII-8BIT)	|ByteString	|string|
+
+
+
 
 
 ## 默认值
