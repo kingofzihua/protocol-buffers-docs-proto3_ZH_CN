@@ -1,5 +1,12 @@
 # Protobuf3 语言指南
 
+## 文档下载
+- [pdf](https://legacy.gitbook.com/download/pdf/book/lixiangyun/protobuf3)
+- [mobi](https://legacy.gitbook.com/download/mobi/book/lixiangyun/protobuf3)
+- [epub](https://legacy.gitbook.com/download/epub/book/lixiangyun/protobuf3)
+
+## 目录
+
 * [定义一个消息类型](#定义一个消息类型)
   * [指定字段类型](#指定字段类型)
   * [分配标识号](#分配标识号)
@@ -36,7 +43,7 @@
 * 英文原文：
   * [Language Guide\(proto3\)](https://developers.google.com/protocol-buffers/docs/proto3?hl=zh-cn#generating)
 * 中文出处：
-  * [Protobuf语言指南](http://www.open-open.com/home/space.php?uid=37924&do=blog&id=5873)
+  * [Protobuf 语言指南](http://www.open-open.com/home/space.php?uid=37924&do=blog&id=5873)
   * [Protobuf 语法指南](中文出处是proto2的译文，proto3的英文出现后在原来基础上增改了，水平有限，还请指正)
 
 ## 定义一个消息类型
