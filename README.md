@@ -2,10 +2,8 @@
 
 ## 出处
 
-* 英文原文：
-  * [Language Guide\(proto3\)](https://developers.google.com/protocol-buffers/docs/proto3?hl=zh-cn#generating)
-* 中文出处：
-  * [Protobuf 语言指南](https://github.com/lixiangyun/protobuf_doc_ZH_CN)
+* 英文原文：[Language Guide\(proto3\)](https://developers.google.com/protocol-buffers/docs/proto3?hl=zh-cn#generating)
+* 中文出处：[Protobuf 语言指南](https://github.com/lixiangyun/protobuf_doc_ZH_CN)
 
 ## 目录
 
@@ -14,23 +12,15 @@
 * [默认值](#默认值)
 * [枚举](#枚举)
 * [使用其他消息类型](#使用其他消息类型)
-  * [导入定义](#导入定义)
-  * [使用proto2消息类型](#使用proto2消息类型)
 * [嵌套类型](#嵌套类型)
 * [更新一个消息类型](#更新一个消息类型)
 * [Any](#any)
 * [Oneof](#oneof)
-  * [使用Oneof](#使用oneof)
-  * [Oneof 特性](#oneof-特性)
-  * [向后兼容性问题](#向后兼容性问题)
 * [映射（Maps）](#映射maps)
-  * [向后兼容性问题](#向后兼容性问题)
 * [包（Packages）](#包packages)
-  * [包及名称的解析](#包及名称的解析)
 * [定义服务](#定义服务)
 * [JSON 映射](#json-映射)
 * [选项](#选项)
-  * [自定义选项](#自定义选项)
 * [生成你的类](#生成你的类)
 
 ## 定义一个消息类型
