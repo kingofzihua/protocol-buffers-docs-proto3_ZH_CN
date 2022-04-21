@@ -354,15 +354,15 @@ for (const Any& detail : status.details()) {
 
 ## Oneof
 
-如果你的消息中有很多可选字段， 并且同时至多一个字段会被设置， 你可以加强这个行为，使用oneof特性节省内存.
+如果你的消息中有很多可选字段， 并且同时至多一个字段会被设置， 你可以加强这个行为，使用 oneof 特性节省内存.
 
-Oneof字段就像可选字段， 除了它们会共享内存， 至多一个字段会被设置。 设置其中一个字段会清除其它字段。 你可以使用case\(\)或者WhichOneof\(\) 方法检查哪个oneof字段被设置， 看你使用什么语言了.
+Oneof 字段就像可选字段， 除了它们会共享内存， 至多一个字段会被设置。 设置其中一个字段会清除其它字段。 你可以使用 `case()` 或者 `WhichOneof()` 方法检查哪个 oneof 字段被设置， 看你使用什么语言了.
 
 ### 使用Oneof
 
-为了在.proto定义Oneof字段， 你需要在名字前面加上oneof关键字, 比如下面例子的test\_oneof:
+为了在 `.proto` 定义 Oneof 字段， 你需要在名字前面加上 `oneof` 关键字, 比如下面例子的 `test_oneof`:
 
-```
+```c++
 message SampleMessage {
   oneof test_oneof {
     string name = 4;
@@ -371,15 +371,15 @@ message SampleMessage {
 }
 ```
 
-然后你可以增加oneof字段到 oneof 定义中. 你可以增加任意类型的字段, 但是不能使用repeated 关键字.
+然后你可以增加 oneof 字段到 oneof 定义中. 你可以增加任意类型的字段, `map` 字段和 `repeated` 字段除外。
 
-在产生的代码中, oneof字段拥有同样的 getters 和setters， 就像正常的可选字段一样. 也有一个特殊的方法来检查到底那个字段被设置. 你可以在相应的语言API指南中找到oneof API介绍.
+在产生的代码中, oneof字段拥有同样的 getters 和 setters， 就像正常的可选字段一样. 也有一个特殊的方法来检查到底那个字段被设置. 你可以在相应的语言[API指南](https://developers.google.com/protocol-buffers/docs/reference/overview)中找到oneof API介绍.
 
 ### Oneof 特性
 
-* 设置oneof会自动清楚其它oneof字段的值. 所以设置多次后，只有最后一次设置的字段有值.
+* 设置 oneof 会自动清除其它 oneof 字段的值. 所以设置多次后，只有最后一次设置的字段有值.
 
-```
+```c++
 SampleMessage message;
 message.set_name("name");
 CHECK(message.has_name());
@@ -387,21 +387,21 @@ message.mutable_sub_message();   // Will clear name field.
 CHECK(!message.has_name());
 ```
 
-* 如果解析器遇到同一个oneof中有多个成员，只有最会一个会被解析成消息。
-* oneof不支持repeated.
-* 反射API对oneof 字段有效.
-* 如果使用C++,需确保代码不会导致内存泄漏. 下面的代码会崩溃， 因为sub\_message 已经通过set\_name\(\)删除了
+* 如果解析器遇到同一个 oneof 中有多个成员，只有最会一个会被解析成消息。
+* oneof 不支持 `repeated`.
+* 反射 API 对 oneof 字段有效.
+* 如果使用 C++,需确保代码不会导致内存泄漏. 下面的代码会崩溃， 因为 `sub_message` 已经通过 `set\_name()` 删除了
 
-```
+```c++
 SampleMessage message;
 SubMessage* sub_message = message.mutable_sub_message();
 message.set_name("name");      // Will delete sub_message
 sub_message->set_...            // Crashes here
 ```
 
-* 在C++中，如果你使用Swap\(\)两个oneof消息，每个消息，两个消息将拥有对方的值，例如在下面的例子中，msg1会拥有sub\_message并且msg2会有name。
+* 在C++中，如果你使用 `Swap()` 两个 oneof 消息，每个消息，两个消息将拥有对方的值，例如在下面的例子中，`msg1` 会拥有 `sub_message` 并且 `msg2` 会有 `name`。
 
-```
+```c++
 SampleMessage msg1;
 msg1.set_name("name");
 SampleMessage msg2;
@@ -413,13 +413,13 @@ CHECK(msg2.has_name());
 
 ### 向后兼容性问题
 
-当增加或者删除oneof字段时一定要小心. 如果检查oneof的值返回None/NOT\_SET, 它意味着oneof字段没有被赋值或者在一个不同的版本中赋值了。 你不会知道是哪种情况，因为没有办法判断如果未识别的字段是一个oneof字段。
+当增加或者删除 oneof 字段时一定要小心. 如果检查 oneof 的值返回 `None`/`NOT_SET` , 它意味着 `oneof` 字段没有被赋值或者在一个不同的版本中赋值了。 你不会知道是哪种情况，因为没有办法判断如果未识别的字段是一个 `oneof` 字段。
 
 Tage 重用问题：
 
-* 将字段移入或移除oneof：在消息被序列号或者解析后，你也许会失去一些信息（有些字段也许会被清除）
-* 删除一个字段或者加入一个字段：在消息被序列号或者解析后，这也许会清除你现在设置的oneof字段
-* 分离或者融合oneof：行为与移动常规字段相似。
+* __将字段移入或移除 oneof__：在消息被序列号或者解析后，你也许会失去一些信息（有些字段也许会被清除）
+* __删除一个字段或者加入一个字段__：在消息被序列号或者解析后，这也许会清除你现在设置的 oneof 字段
+* __拆分或合并 oneof__：行为与移动常规字段相似。
 
 ## 映射（Maps）
 
