@@ -122,7 +122,7 @@ message Foo {
 一个标量消息字段可以含有一个如下的类型——该表格展示了定义于.proto文件中的类型，以及与之对应的、在自动生成的访问类中定义的类型：
 
 | .proto Type | Notes | C++ Type | Java Type | Python Type\[2\] | Go Type | Ruby Type | C\# Type | PHP Type |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| --- | ------------ | --- | --- | --- | --- | --- | --- | --- |
 | double |  | double | double | float | float64 | Float | double | float |
 | float |  | float | float | float | float32 | Float | float | float |
 | int32 | 使用变长编码，对于负值的效率很低，如果你的域有可能有负值，请使用sint64替代 | int32 | int | int | int32 | Fixnum 或者 Bignum（根据需要） | int | integer |
@@ -390,7 +390,7 @@ CHECK(!message.has_name());
 * 如果解析器遇到同一个 oneof 中有多个成员，只有最会一个会被解析成消息。
 * oneof 不支持 `repeated`.
 * 反射 API 对 oneof 字段有效.
-* 如果使用 C++,需确保代码不会导致内存泄漏. 下面的代码会崩溃， 因为 `sub_message` 已经通过 `set\_name()` 删除了
+* 如果使用 C++,需确保代码不会导致内存泄漏. 下面的代码会崩溃， 因为 `sub_message` 已经通过 `set_name()` 删除了
 
 ```c++
 SampleMessage message;
